@@ -5,40 +5,48 @@ import { Fade } from "react-awesome-reveal";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // const formData = new FormData(e.currentTarget);
-    navigate("/home")
+    navigate("/home");
   };
 
   return (
     <div className="login">
       <Navbar />
-      <Fade > 
+      <Fade>
         <div className="login-main">
           <section className="login-section-1">
             <img
-              src="src/assets/images/secure house.png"
+              src="assets/images/secure house.png"
               alt="Icono casa segura"
               style={{ width: "60%" }}
             />
           </section>
           <section className="login-section-2">
             <img
-              src="src/assets/images/login.png"
+              src="assets/images/login.png"
               alt="Icono de ususario"
               style={{ width: "120px" }}
-            />{" "}
+            />
             <br />
             <form action="" onSubmit={handleSubmit}>
               <h1>Iniciar sesión</h1>
               <br />
-              <input type="text" placeholder="Correo electrónico" id="email" name="email"  />
+              <input
+                type="text"
+                placeholder="Correo electrónico"
+                id="email"
+                name="email"
+              />
               <br />
-              <input type="password" placeholder="Contraseña" id="password" name="password" />
+              <input
+                type="password"
+                placeholder="Contraseña"
+                id="password"
+                name="password"
+              />
               <div className="login-span">
                 <Link to="/RecoverPassword" className="login-span-a">
                   Olvide mi contraseña
