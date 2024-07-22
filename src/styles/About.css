@@ -5,7 +5,12 @@
 
 .about-main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    height: 100%;
     box-sizing: border-box;
-    padding-left: 6%;
+    padding-top: 20px;
+}
+
+.about-section-1 {
+    
 }
