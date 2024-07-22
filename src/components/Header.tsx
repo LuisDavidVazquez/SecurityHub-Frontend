@@ -5,7 +5,7 @@ function Header() {
   return (
     <div className="header-main">
       <img
-        src="src/assets/images/LogoSecurityHub.png"
+        src="/assets/images/LogoSecurityHub.png"
         alt="Logo SecurityHub"
         className="home-header-logo"
       />
@@ -13,7 +13,7 @@ function Header() {
         <li>
           <div style={{ height: "50%" }}>
             <img
-              src="src/assets/svg/notification.svg"
+              src="/assets/svg/notification.svg"
               alt="Icono de notificacion"
               style={{ height: "90%" }}
             />
@@ -23,7 +23,7 @@ function Header() {
           <div className="header-main-user">
             <ButtonA
               text="Arturo Amizaday"
-              imgSrc="src/assets/svg/user.svg"
+              imgSrc="/assets/svg/user.svg"
               imgAlt="Icono de usuario"
             />
           </div>
