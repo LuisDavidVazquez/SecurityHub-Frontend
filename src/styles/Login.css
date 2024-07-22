@@ -1,0 +1,118 @@
+.login {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-main {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 20px;
+}
+
+.login-section-1 {
+    width: 50%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-section-2 {
+    width: 50%;
+    height: 600px;
+    box-sizing: border-box;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.login-main form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    color: white;
+}
+
+.login-main input {
+    width: 70%;
+    height: 50px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid white;
+    font-size: 16px;
+    color: white;
+    box-sizing: border-box;
+    padding-left: 2%;
+}
+
+
+.login-main button {
+    width: 70%;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #00bda4;
+    border: 2px solid transparent;
+    font-size: 16px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.login-main input:hover {
+
+    border: 2px solid #00bda4;
+    transition: background 200ms;
+}
+
+.login-main button:hover {
+    background-color: transparent;
+    border: 2px solid #00bda4;
+    transition: background 200ms;
+}
+
+.login-main input::placeholder {
+    color: white;
+}
+
+.login-span {
+    color: white;
+    box-sizing: border-box;
+    padding-top: 15px;
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login-span-a:hover {
+    color: #00bda4;
+}
+
+.login-span-a {
+    color: white;
+}
+
+
+@media (max-width: 800px) {
+    .login-main {
+        display: flex;
+        flex-direction: column-reverse;
+        height: 100%;
+    }
+
+    .login-section-2 {
+        box-sizing: border-box;
+        padding: 0px;
+    }
+
+    .login-section-1, .login-section-2 {
+        width: 100%;
+        height: 450px;
+    }
+}

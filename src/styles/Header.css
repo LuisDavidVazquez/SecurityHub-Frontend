@@ -1,0 +1,40 @@
+.header-main {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding-left: 6%;
+}
+
+.header-main ul {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    justify-content: end;
+}
+
+.header-main li{
+    height: 100%;
+    display: flex;
+    flex-direction: rows;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0px 15px;
+}
+
+.header-main-user {
+    text-decoration: none;
+    height: 60%;
+    width: auto;
+    color: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 3px solid #06D3B8;
+    padding: 10px 15px;
+}
+
+.home-header-logo {
+    box-sizing: border-box;
+    padding: 0% 2%;
+}

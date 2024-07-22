@@ -1,0 +1,44 @@
+.home {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-main {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-left: 6%;
+}
+
+.home-section {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 5%;
+}
+
+.home-section-metrics {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    color: white;
+}
+
+.home-section-metrics ul {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.home-section-metrics ul li{
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    width: 300px;
+    height: auto;
+    box-sizing: border-box;
+    border-radius: 15px;
+    padding: 15px;
+    border: 2px solid #00bda4;
+}

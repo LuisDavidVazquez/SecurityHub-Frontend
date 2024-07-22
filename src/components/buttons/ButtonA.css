@@ -1,0 +1,14 @@
+.buttonA-a {
+    height: 100%;
+    width: auto;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.buttonA-a-icon {
+    height: 100%;
+    width: auto;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
