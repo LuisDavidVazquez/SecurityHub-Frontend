@@ -5,10 +5,19 @@ import { useState } from "react";
 
 function RecoverPassword() {
   const [alert, setAlert] = useState(false);
+  const [alertNegative, setAlertNegative] = useState(false  );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setAlert(true);
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email")
+    if(email === "admin"){
+      setAlertNegative(false)
+      setAlert(true)
+    } else {
+      setAlertNegative(true)
+      setAlert(false)
+    }
   };
 
   return (
@@ -39,9 +48,14 @@ function RecoverPassword() {
               <button>Enviar</button>
               <br />
               <br />
-              {alert && (
+              {alertNegative && (
                 <div className="recoverpassword-result ">
-                  <h6>Se envio tu nueva contraseña a tu whatsapp</h6>
+                  <h6>No se encontro el correo electrónico</h6>
+                </div>
+              )}
+              {alert && (
+                <div className="recoverpassword-result-correct ">
+                  <h6>Se envio la nueva contraseña a tu whatsapp</h6>
                 </div>
               )}
             </form>

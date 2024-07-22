@@ -1,0 +1,19 @@
+.profiles{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.profiles-main{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgb(255, 181, 20);
+}
+
+.profiles-main img{
+    width: 100%;
+}

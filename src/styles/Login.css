@@ -99,6 +99,20 @@
 }
 
 
+.login-result {
+    width: 70%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #ff0808;
+    border: 5px solid #d10000;
+    font-size: 16px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media (max-width: 800px) {
     .login-main {
         display: flex;

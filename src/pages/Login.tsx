@@ -3,13 +3,28 @@ import Navbar from "../components/Navbar";
 import "../styles/Login.css";
 import { Fade } from "react-awesome-reveal";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useState } from "react";
 
 function Login() {
   const navigate = useNavigate();
 
+  const [alertNegative, setAlertNegative] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    navigate("/home");
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email")
+    const password = formData.get("password")
+    if(email === "admin" && password === "1234"){
+      Swal.fire({
+        title: "Bienvenido! " + email + "",
+        icon: "success"
+      });
+      navigate("/home");
+    } else {
+      setAlertNegative(true)
+    }
   };
 
   return (
@@ -44,7 +59,12 @@ function Login() {
                 <br />
                 <br />
               </div>
-              <button>Ingresar</button>
+              <button>Ingresar</button><br /><br />
+              {alertNegative && (
+                <div className="login-result ">
+                  <h6>Error con las credenciales</h6>
+                </div>
+              )}
             </form>
           </section>
         </div>
