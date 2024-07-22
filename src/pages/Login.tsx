@@ -31,7 +31,7 @@ function Login() {
               src="src/assets/images/login.png"
               alt="Icono de ususario"
               style={{ width: "120px" }}
-            />{" "}
+            />
             <br />
             <form action="" onSubmit={handleSubmit}>
               <h1>Iniciar sesión</h1>
