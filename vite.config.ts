@@ -8,16 +8,16 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: 'src/assets/fonts',
-          dest: 'assets/fonts'
+          src: 'src/assets/fonts/*', // Copia solo el contenido de la carpeta
+          dest: 'assets/fonts'       // Destino correcto
         },
         {
-          src: 'src/assets/images',
-          dest: 'assets/images'
+          src: 'src/assets/images/*', // Copia solo el contenido de la carpeta
+          dest: 'assets/images'       // Destino correcto
         },
         {
-          src: 'src/assets/svg',
-          dest: 'assets/svg'
+          src: 'src/assets/svg/*', // Copia solo el contenido de la carpeta
+          dest: 'assets/svg'       // Destino correcto
         }
       ]
     })
