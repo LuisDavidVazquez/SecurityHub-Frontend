@@ -28,7 +28,7 @@ function Navbar() {
   return (
     <div className="navbar-login">
       <img
-        src="src/assets/images/LogoSecurityHub.png"
+        src="/assets/images/LogoSecurityHub.png"
         alt="Logo SecurityHub"
         className="navbar-login-logo"
       />
