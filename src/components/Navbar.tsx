@@ -14,13 +14,13 @@ function Navbar() {
     {
       path: "/",
       text: "Conócenos",
-      imgSrc: "src/assets/svg/world.svg",
+      imgSrc: "/assets/svg/world.svg",
       imgAlt: "Icono de mundo",
     },
     {
       path: "/login",
       text: "Iniciar Sesión",
-      imgSrc: "src/assets/svg/user.svg",
+      imgSrc: "/assets/svg/user.svg",
       imgAlt: "Icono de usuario",
     },
   ];

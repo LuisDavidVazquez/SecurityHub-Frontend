@@ -13,22 +13,22 @@ function Menu() {
   const navItems: NavItem[] = [
     {
       path: "/home",
-      imgSrc: "src/assets/svg/home.svg",
+      imgSrc: "/assets/svg/home.svg",
       imgAlt: "Icono de casa",
     },
     {
       path: "/cameras",
-      imgSrc: "src/assets/svg/camera.svg",
+      imgSrc: "/assets/svg/camera.svg",
       imgAlt: "Icono de camara",
     },
     {
       path: "/stadistics",
-      imgSrc: "src/assets/svg/stadistic.svg",
+      imgSrc: "/assets/svg/stadistic.svg",
       imgAlt: "Icono de estadistica",
     },
     {
       path: "/settings",
-      imgSrc: "src/assets/svg/settings.svg",
+      imgSrc: "/assets/svg/settings.svg",
       imgAlt: "Icono de configuracion",
     },
   ];
@@ -52,7 +52,7 @@ function Menu() {
       <div className="menu-logout">
         <Link to="/login" className="menuNav">
           <MenuButton
-            imgSrc="src/assets/svg/logout.svg"
+            imgSrc="/assets/svg/logout.svg"
             imgAlt="Icono cerrar sesión"
           />
         </Link>

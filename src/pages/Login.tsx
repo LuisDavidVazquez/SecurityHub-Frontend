@@ -19,14 +19,14 @@ function Login() {
         <div className="login-main">
           <section className="login-section-1">
             <img
-              src="assets/images/secure house.png"
+              src="/assets/images/secure house.png" // Ajustar la ruta
               alt="Icono casa segura"
               style={{ width: "60%" }}
             />
           </section>
           <section className="login-section-2">
             <img
-              src="assets/images/login.png"
+              src="/assets/images/login.png" // Ajustar la ruta
               alt="Icono de ususario"
               style={{ width: "120px" }}
             />
@@ -34,19 +34,9 @@ function Login() {
             <form action="" onSubmit={handleSubmit}>
               <h1>Iniciar sesión</h1>
               <br />
-              <input
-                type="text"
-                placeholder="Correo electrónico"
-                id="email"
-                name="email"
-              />
+              <input type="text" placeholder="Correo electrónico" id="email" name="email" />
               <br />
-              <input
-                type="password"
-                placeholder="Contraseña"
-                id="password"
-                name="password"
-              />
+              <input type="password" placeholder="Contraseña" id="password" name="password" />
               <div className="login-span">
                 <Link to="/RecoverPassword" className="login-span-a">
                   Olvide mi contraseña
