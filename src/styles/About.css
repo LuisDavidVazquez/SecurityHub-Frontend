@@ -23,8 +23,6 @@
     box-sizing: border-box;
 }
 
-
-
 .about-section-1 img {
     position: relative;
     top: 50%;
@@ -46,12 +44,11 @@
     justify-content: center;
     align-items: center;
     width: 50vw;
-    height: 30vh;
     box-shadow: 1px 1px 15px 7px rgb(6, 207, 97);
     background-color: rgba(5,68,59,1) ;
     box-sizing: border-box;
-    padding: 17px;
-    font-size: 2.5vh;
+    padding: 3%;
+    font-size: 2vw;
 }
 
 .about-section-3 {
@@ -66,7 +63,7 @@
     border-right: 4px solid #00bda4;
     box-sizing: border-box;
     padding: 3%;
-    font-size: 6vh;
+    font-size: 4vh;
     display: flex;
     align-items: center;
 }
@@ -81,7 +78,7 @@
     border-left: 4px solid #00bda4;
     box-sizing: border-box;
     padding: 3%;
-    font-size: 2vh;
+    font-size: 1.5vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
