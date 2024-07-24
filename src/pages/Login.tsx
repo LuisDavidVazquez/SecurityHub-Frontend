@@ -29,7 +29,8 @@ function Login() {
           'Content-Type': 'application/json',
         },
       });
-
+      console.log(response.data);
+      
       const token = response.data.token;
 
       localStorage.setItem('token', token);
@@ -40,10 +41,10 @@ function Login() {
         icon: "success",
         showConfirmButton: false,
       });
-
       navigate("/home");
 
     } catch (error) {
+      console.log(error);
       setAlertNegative(true);
     }
   };

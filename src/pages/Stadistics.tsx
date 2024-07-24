@@ -10,7 +10,8 @@ function Stadistics() {
       <div className="sub-maindiv">
         <Fade>
           <Header />
-          <div className="home-section"></div>
+          <div className="home-section">
+          </div>
         </Fade>
       </div>
     </div>

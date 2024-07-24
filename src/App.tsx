@@ -13,6 +13,7 @@ import Settings from './pages/Settings';
 // Componente de rutas protegidas
 const ProtectedRoute = ({ element }: { element: JSX.Element }) => {
   const token = localStorage.getItem('token');
+  // return token ? element : <Navigate to="/login" />;
   return token ? element : <Navigate to="/login" />;
 };
 

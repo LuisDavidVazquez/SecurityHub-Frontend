@@ -18,10 +18,9 @@ function RecoverPassword() {
     const url = import.meta.env.VITE_BACKEND_URL;
 
     try {
-      const response = await axios.put(`${url}/users/update-password`,{
-        email : email
-      })
-
+      const response = await axios.put(`${url}/users/update-password/${email}`)
+      console.log(response.data);
+      
       if(response.data.error) {
         console.log(response.data.error);
         setAlertNegative(true)
