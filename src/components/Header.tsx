@@ -1,7 +1,11 @@
 import "../styles/Header.css";
 import ButtonA from "./buttons/ButtonA";
 
+
 function Header() {
+
+  const email = localStorage.getItem('email') as string;
+
   return (
     <div className="header-main">
       <img
@@ -22,7 +26,7 @@ function Header() {
         <li>
           <div className="header-main-user">
             <ButtonA
-              text="Arturo Amizaday"
+              text={email}
               imgSrc="/assets/svg/user.svg"
               imgAlt="Icono de usuario"
             />

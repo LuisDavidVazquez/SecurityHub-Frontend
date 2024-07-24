@@ -3,6 +3,10 @@ import MenuButton from "./buttons/MenuButton";
 import { Link, NavLink } from "react-router-dom";
 
 function Menu() {
+  const logOut = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+  };
 
   interface NavItem {
     path: string;
@@ -50,7 +54,7 @@ function Menu() {
         ))}
       </ul>
       <div className="menu-logout">
-        <Link to="/login" className="menuNav">
+        <Link onClick={logOut} to="/login" className="menuNav">
           <MenuButton
             imgSrc="/assets/svg/logout.svg"
             imgAlt="Icono cerrar sesión"

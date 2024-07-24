@@ -2,22 +2,41 @@ import { Fade } from "react-awesome-reveal";
 import Navbar from "../components/Navbar";
 import "../styles/RecoverPassword.css";
 import { useState } from "react";
+import axios from "axios";
 
 function RecoverPassword() {
+
   const [alert, setAlert] = useState(false);
   const [alertNegative, setAlertNegative] = useState(false  );
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email")
-    if(email === "admin"){
-      setAlertNegative(false)
-      setAlert(true)
-    } else {
+
+    const url = import.meta.env.VITE_BACKEND_URL;
+
+    try {
+      const response = await axios.put(`${url}/users/update-password`,{
+        email : email
+      })
+
+      if(response.data.error) {
+        console.log(response.data.error);
+        setAlertNegative(true)
+        setAlert(false)
+      }else {
+        setAlertNegative(false)
+        setAlert(true)
+      }
+
+    } catch (error) {
+      console.log(error);
       setAlertNegative(true)
       setAlert(false)
     }
+
   };
 
   return (
