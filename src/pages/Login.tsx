@@ -3,28 +3,28 @@ import Navbar from "../components/Navbar";
 import "../styles/Login.css";
 import { Fade } from "react-awesome-reveal";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import { useState } from "react";
 
 function Login() {
   const navigate = useNavigate();
-
   const [alertNegative, setAlertNegative] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const email = formData.get("email")
-    const password = formData.get("password")
-    if(email === "admin" && password === "1234"){
-      Swal.fire({
-        title: "Bienvenido! " + email + "",
-        icon: "success"
-      });
-      navigate("/home");
-    } else {
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    // const api_url = import.meta.env.VITE_HEXAGONAL_URL;
+
+    if(email === "admin" && password==="1234"){
+      navigate("/home")
+    }else {
       setAlertNegative(true)
     }
+
+  
+
   };
 
   return (
@@ -34,19 +34,19 @@ function Login() {
         <div className="login-main">
           <section className="login-section-1">
             <img
-              src="/assets/images/secure house.png" // Ajustar la ruta
+              src="/assets/images/secure house.png"
               alt="Icono casa segura"
               style={{ width: "60%" }}
             />
           </section>
           <section className="login-section-2">
             <img
-              src="/assets/images/login.png" // Ajustar la ruta
-              alt="Icono de ususario"
+              src="/assets/images/login.png"
+              alt="Icono de usuario"
               style={{ width: "120px" }}
             />
             <br />
-            <form action="" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <h1>Iniciar sesión</h1>
               <br />
               <input type="text" placeholder="Correo electrónico" id="email" name="email" />
@@ -59,9 +59,9 @@ function Login() {
                 <br />
                 <br />
               </div>
-              <button>Ingresar</button><br /><br />
+              <button type="submit">Ingresar</button><br /><br />
               {alertNegative && (
-                <div className="login-result ">
+                <div className="login-result">
                   <h6>Error con las credenciales</h6>
                 </div>
               )}

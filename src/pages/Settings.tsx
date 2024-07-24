@@ -1,21 +1,20 @@
 import Menu from '../components/Menu'
 import Header from '../components/Header'
 import { Fade } from 'react-awesome-reveal'
+import "../styles/maindiv.css"
 
 function Settings() {
   return (
-    <div>
+    <div className="maindiv">
       <Menu />
-      <div className="settings-main">
+      <div className="sub-maindiv">
         <Fade>
           <Header />
-          <div className="settings-section">
-
-          </div>
+          <div className="home-section"></div>
         </Fade>
       </div>
     </div>
-  )
+  );
 }
 
 export default Settings

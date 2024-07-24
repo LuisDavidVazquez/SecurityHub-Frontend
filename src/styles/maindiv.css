@@ -1,0 +1,31 @@
+.maindiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.sub-maindiv{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-left: 6%;
+}
+
+@media (max-width : 800px) {
+
+    .maindiv {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+    
+    .sub-maindiv{
+        display: flex;
+        flex-direction: row;
+        padding-top: 20vw;
+        padding-left: 0px;
+    }
+}

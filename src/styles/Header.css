@@ -4,7 +4,6 @@
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
-    padding-left: 6%;
 }
 
 .header-main ul {
@@ -37,4 +36,12 @@
 .home-header-logo {
     box-sizing: border-box;
     padding: 0% 2%;
+}
+
+@media (max-width: 800px) {
+
+    .header-main{
+        display: none;
+    }
+
 }

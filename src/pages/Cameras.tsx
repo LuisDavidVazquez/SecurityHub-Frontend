@@ -1,22 +1,20 @@
 import Menu from '../components/Menu'
 import Header from '../components/Header'
 import { Fade } from 'react-awesome-reveal'
-import VideoStream from '../components/VideoStream'
+import "../styles/maindiv.css"
 
 function Cameras() {
   return (
-    <div>
+    <div className="maindiv">
       <Menu />
-      <div className="camera-main">
+      <div className="sub-maindiv">
         <Fade>
           <Header />
-          <div className="camera-section">
-            <VideoStream />
-          </div>
+          <div className="home-section"></div>
         </Fade>
       </div>
     </div>
-  )
+  );
 }
 
 export default Cameras

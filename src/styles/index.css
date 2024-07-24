@@ -22,5 +22,11 @@
   background-attachment: fixed;
 }
 
+@media (max-width : 800px) {
+  #root, html, body {
+    width: 100vw;
+    height: 100%;
+  }
+}
 
 

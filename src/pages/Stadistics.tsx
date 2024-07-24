@@ -1,23 +1,20 @@
-import { Fade } from "react-awesome-reveal"
-import Header from "../components/Header"
-import Menu from "../components/Menu"
-
+import Menu from '../components/Menu'
+import Header from '../components/Header'
+import { Fade } from 'react-awesome-reveal'
+import "../styles/maindiv.css"
 
 function Stadistics() {
   return (
-    <div>
+    <div className="maindiv">
       <Menu />
-      <div className="stadistic-main">
+      <div className="sub-maindiv">
         <Fade>
           <Header />
-          <div className="stadistic-section">
-
-          </div>
+          <div className="home-section"></div>
         </Fade>
       </div>
     </div>
-  )
+  );
 }
 
 export default Stadistics
-
