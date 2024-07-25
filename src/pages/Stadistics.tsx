@@ -6,6 +6,9 @@ import Header from "../components/Header";
 import "../styles/maindiv.css";
 import "../styles/Stadistics.css";
 import MyChartUnique from "../components/MyChartUnique";
+import HistoricalChart from "../components/HistoricalChart";
+import PieChartTrueOnly from "../components/PieChartTrueOnly"; // Importar el nuevo componente
+import FullCalendarEvents from "../components/FullCalendarEvents"; // Importar el nuevo componente
 
 interface SensorData {
   userId: number;
@@ -34,16 +37,13 @@ function Stadistics() {
     socket.on("IncomingData", (data: { message: string }) => {
       const parsedData: SensorData = JSON.parse(data.message);
       setSensorData((prevData) => {
-        // Verifica si ya existe el usuario en prevData
         const existingUserIndex = prevData.findIndex((item) => item.userId === parsedData.userId);
         
         if (existingUserIndex !== -1) {
-          // Si existe, actualiza sus datos de sensores
           const updatedData = [...prevData];
           updatedData[existingUserIndex] = parsedData;
           return updatedData;
         } else {
-          // Si no existe, agrega un nuevo usuario con sus datos de sensores
           return [...prevData, parsedData];
         }
       });
@@ -90,17 +90,34 @@ function Stadistics() {
               <ul>
                 <li>
                   <div className='stadistics-grafic'>
-                    {/* Añadir componente de gráficos históricos aquí */}
+                    <HistoricalChart dataType="temperatura" color="rgba(255, 99, 132, 1)" />
                   </div>
                 </li>
                 <li>
                   <div className='stadistics-grafic'>
-                    {/* Añadir componente de gráficos históricos aquí */}
+                    <HistoricalChart dataType="humedad" color="rgba(54, 162, 235, 1)" />
                   </div>
                 </li>
                 <li>
                   <div className='stadistics-grafic'>
-                    {/* Añadir componente de gráficos históricos aquí */}
+                    <HistoricalChart dataType="sonido" color="rgba(75, 192, 192, 1)" />
+                  </div>
+                </li>
+              </ul>
+            </section>
+            <br /><br />
+            <section className="stadistics-section-1">
+              <h1>Anomalías detectadas</h1>
+              <br />
+              <ul>
+                <li>
+                  <div className='stadistics-grafic'>
+                    <PieChartTrueOnly dataType1="movimiento" dataType2="fuego" color1="rgba(255, 99, 132, 1)" color2="rgba(54, 162, 235, 1)" />
+                  </div>
+                </li>
+                <li>
+                  <div className='stadistics-grafic'>
+                    <FullCalendarEvents dataType1="movimiento" dataType2="fuego" color1="rgba(255, 99, 132, 1)" color2="rgba(54, 162, 235, 1)" />
                   </div>
                 </li>
               </ul>
