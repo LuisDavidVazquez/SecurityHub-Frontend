@@ -6,6 +6,11 @@ function Menu() {
   const logOut = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
+    localStorage.removeItem('id');
+    localStorage.removeItem('name');
+    localStorage.removeItem('lastName');
+    localStorage.removeItem('phone');
+    localStorage.removeItem('mail');
   };
 
   interface NavItem {

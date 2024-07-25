@@ -14,6 +14,9 @@ function Login() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
     e.preventDefault();
+
+    setAlertNegative(false)
+
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
@@ -32,12 +35,18 @@ function Login() {
       console.log(response.data);
       
       const token = response.data.token;
-
+      const res = await axios.post(`${url}/users/authToken`,{
+        token : token
+      })
       localStorage.setItem('token', token);
-      localStorage.setItem('email', email);
+      localStorage.setItem('id', res.data.decoded.id);
+      localStorage.setItem('name', res.data.decoded.name);
+      localStorage.setItem('lastname', res.data.decoded.lastName);
+      localStorage.setItem('phone', res.data.decoded.phone);
+      localStorage.setItem('email', res.data.decoded.mail);
 
       Swal.fire({
-        title: "Bienvenido " + email,
+        title: "Bienvenido " + res.data.decoded.name,
         icon: "success",
         showConfirmButton: false,
       });

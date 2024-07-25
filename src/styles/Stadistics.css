@@ -1,0 +1,50 @@
+.stadistics-section {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 4%;
+}
+
+.stadistics-section h1 {
+    font-size: 30px;
+}
+
+.stadistics-section-1 {
+    color: white;
+    width: 100%;
+}
+
+.stadistics-section ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+} 
+
+.stadistics-section ul li {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 47%;
+    min-width: 300px;
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 15px;
+    height: auto;
+    background-color: white;
+    height: auto;
+    border-radius: 10px;
+    border: 4px solid #00bda4;
+} 
+
+.stadistics-media {
+    font-size: 15px;
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+    border: 3px solid greenyellow;
+    background-color: #00bda4;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}   

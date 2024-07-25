@@ -5,6 +5,7 @@ import Menu from "../components/Menu";
 import Header from "../components/Header";
 import "../styles/Home.css";
 import "../styles/maindiv.css";
+import MyChart from "../components/MyChart";
 
 // Tipo para la estructura de los datos recibidos
 interface SensorData {
@@ -17,9 +18,12 @@ interface SensorData {
   }[];
 }
 
-const socket: Socket = io("http://localhost:5555",{
+const url = import.meta.env.VITE_SOCKET_URL;
+const token = import.meta.env.VITE_SOCKET_TOKEN_URL;
+
+const socket: Socket = io(`${url}`, {
   auth: {
-    token: "wintersito",
+    token: `${token}`,
   },
   transports: ["websocket"],
 });
@@ -31,9 +35,12 @@ function Home() {
   const [movement, setMovement] = useState<boolean>(false);
   const [fire, setFire] = useState<boolean>(false);
 
+  const [sensorData, setSensorData] = useState<SensorData[]>([]);
+
   useEffect(() => {
     socket.on("IncomingData", (data: { message: string }) => {
       const parsedData: SensorData = JSON.parse(data.message);
+      setSensorData(prevData => [...prevData, parsedData]);
       console.log("Datos recibidos:", parsedData);
       
       parsedData.sensors.forEach(sensor => {
@@ -45,18 +52,19 @@ function Home() {
             setHumidity(sensor.data as number);
             break;
           case 'sonido':
-            if (sensor.data === 1) {
-              const randomNoise = Math.floor(Math.random() * 5) + 1;
-              setNoise(randomNoise);
-            } else {
-              setNoise(null);
-            }
+              setNoise(sensor.data as number);
             break;
           case 'movimiento':
             setMovement(sensor.data as boolean);
+            if(sensor.data as boolean === true){
+              getAlertMovement();
+            }
             break;
           case 'fuego':
             setFire(sensor.data as boolean);
+            if(sensor.data as boolean === true){
+              getAlertFire();
+            }
             break;
           default:
             break;
@@ -68,6 +76,14 @@ function Home() {
       socket.off("IncomingData");
     };
   }, []);
+
+  const getAlertMovement = () => {
+    // Lógica para manejar alertas de movimiento
+  }
+
+  const getAlertFire = () => {
+    // Lógica para manejar alertas de fuego
+  }
 
   return (
     <div className="maindiv">
@@ -87,7 +103,7 @@ function Home() {
                     style={{ width: "15%" }}
                   />
                   <h2>Temperatura</h2>
-                  <h2>{temperature !== null ? `${temperature}°C` : 'N/A'}</h2>
+                  <h2>{temperature !== null ? `${temperature}°C` : "N/A"}</h2>
                 </li>
                 <li className="home-humedad">
                   <img
@@ -96,7 +112,7 @@ function Home() {
                     style={{ width: "15%" }}
                   />
                   <h2>Humedad</h2>
-                  <h2>{humidity !== null ? `${humidity}%` : 'N/A'}</h2>
+                  <h2>{humidity !== null ? `${humidity}%` : "N/A"}</h2>
                 </li>
                 <li className="home-ruido">
                   <img
@@ -105,7 +121,7 @@ function Home() {
                     style={{ width: "15%" }}
                   />
                   <h2>Ruido</h2>
-                  <h2>{noise !== null ? noise : 'N/A'}</h2>
+                  <h2>{noise !== null ? noise : "0"}</h2>
                 </li>
               </ul>
               <br />
@@ -130,6 +146,17 @@ function Home() {
                   </li>
                 </ul>
               </section>
+            </section>
+            <br />
+            <br />
+            <section className="home-section-grafic">
+              <h1>Gráfica</h1>
+              <br />
+              <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
+                <div className="graficas">
+                  <MyChart sensorData={sensorData} />
+                </div>
+              </div>
             </section>
           </div>
         </Fade>
