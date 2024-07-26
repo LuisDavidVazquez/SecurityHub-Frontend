@@ -7,7 +7,7 @@ function About() {
   const profileItems = [
     "Luis David Vázquez Albores",
     "Rodrigo Eliseo García Hérnandez",
-    "Carlos Marroquin Ocanña",
+    "Carlos Marroquin Ocaña",
     "Arturo Amizaday Jimenez Ojendis",
   ];
 
@@ -74,7 +74,7 @@ function About() {
             </div>
           </section>
           <section className="about-section-4">
-            <p>Nosostros</p>
+            <p>Nosotros</p>
             <br />
             <br />
             <ul className="about-section-4-profile">

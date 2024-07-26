@@ -20,10 +20,10 @@ interface SensorData {
   }[];
 }
 
-const url = import.meta.env.VITE_SOCKET_URL as string;
+//const url = import.meta.env.VITE_SOCKET_URL as string;
 const token = import.meta.env.VITE_SOCKET_TOKEN_URL as string;
 
-const socket: Socket = io(`${url}`, {
+const socket: Socket = io("https://ws.decasoft.xyz", {
   auth: {
     token: `${token}`,
   },

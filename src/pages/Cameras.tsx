@@ -27,7 +27,7 @@ const socket: Socket = io(`${url}`, {
   transports: ["websocket"],
 });
 
-const cameraSocket: Socket = io("http://192.168.43.246:5000", {
+const cameraSocket: Socket = io("http://192.168.1.106:5000", {
   transports: ["websocket"],
 });
 
@@ -73,7 +73,7 @@ const Cameras: React.FC = () => {
 
   const takePhoto = async () => {
 
-    const response = await fetch(`http://192.168.43.246:5000/take_photo`, { method: 'POST' });
+    const response = await fetch(`http://192.168.1.106:5000/take_photo`, { method: 'POST' });
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -93,13 +93,13 @@ const Cameras: React.FC = () => {
   const startRecording = async () => {
     getButtonStart(false)
     getButtonStop(true)
-    await fetch(`http://192.168.43.246:5000/start_recording`, { method: 'POST' });
+    await fetch(`http://192.168.1.106:5000/start_recording`, { method: 'POST' });
   };
 
   const stopRecording = async () => {
     getButtonStart(true)
     getButtonStop(false)
-    await fetch(`http://192.168.43.246:5000/stop_recording`, { method: 'POST' });
+    await fetch(`http://192.168.1.106:5000/stop_recording`, { method: 'POST' });
     Swal.fire({
       title: "Video guardado",
       icon: "success",
