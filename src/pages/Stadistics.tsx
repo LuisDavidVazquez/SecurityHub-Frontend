@@ -20,10 +20,10 @@ interface SensorData {
   }[];
 }
 
-//const url = import.meta.env.VITE_SOCKET_URL as string;
+const url = import.meta.env.VITE_SOCKET_URL as string;
 const token = import.meta.env.VITE_SOCKET_TOKEN_URL as string;
 
-const socket: Socket = io("https://ws.decasoft.xyz", {
+const socket: Socket = io(`${url}`, {
   auth: {
     token: `${token}`,
   },
@@ -112,12 +112,12 @@ function Stadistics() {
               <ul>
                 <li>
                   <div className='stadistics-grafic'>
-                    <PieChartTrueOnly dataType1="movimiento" dataType2="fuego" color1="rgba(255, 99, 132, 1)" color2="rgba(54, 162, 235, 1)" />
+                    <PieChartTrueOnly dataType1="MOVIMIENTO" dataType2="FUEGO" color1="rgba(54, 162, 235, 1)" color2="rgba(255, 99, 132, 1)" />
                   </div>
                 </li>
                 <li>
-                  <div className='stadistics-grafic'>
-                    <FullCalendarEvents dataType1="movimiento" dataType2="fuego" color1="rgba(255, 99, 132, 1)" color2="rgba(54, 162, 235, 1)" />
+                  <div className='stadistics-grafic stadistics-calendar'>
+                    <FullCalendarEvents dataType1="MOVIMIENTO" dataType2="FUEGO" color1="rgba(54, 162, 235, 1)" color2="rgba(255, 99, 132, 1)" />
                   </div>
                 </li>
               </ul>

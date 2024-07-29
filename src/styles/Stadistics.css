@@ -30,7 +30,7 @@
     box-sizing: border-box;
     padding: 5px;
     margin: 15px;
-    height: 550px;
+    height: auto;
     background-color: white;
     border-radius: 10px;
     border: 4px solid #00bda4;
@@ -39,12 +39,23 @@
 
 .stadistics-media {
     font-size: 15px;
-    width: 250px;
+    width: 50%;
+    min-width: 300px;
     height: 40px;
     border-radius: 10px;
-    border: 3px solid greenyellow;
+    border: 3px solid #009480;
     background-color: #00bda4;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    color: white;
 }   
+
+.stadistics-calendar {
+    max-height :600px;
+    font-size: 80%;
+}
+
+.stadistics-section h3 {
+    color: #009480;
+}

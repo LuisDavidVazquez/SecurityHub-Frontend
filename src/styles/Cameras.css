@@ -14,8 +14,8 @@
 } 
 
 .camera-section-1-videocam{
-    width: 50%;
-    min-width: 300px; 
+    width: auto;
+    min-width: auto; 
     background-color: black;
     height: auto;
 }
