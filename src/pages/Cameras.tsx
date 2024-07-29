@@ -27,7 +27,7 @@ const socket: Socket = io(`${url}`, {
   transports: ["websocket"],
 });
 
-const cameraSocket: Socket = io("https://yellow-rice-grow.loca.lt", {
+const cameraSocket: Socket = io("https://old-rules-battle.loca.lt", {
   transports: ["websocket"],
 });
 
@@ -70,42 +70,76 @@ const Cameras: React.FC = () => {
   }, []);
 
 
-
   const takePhoto = async () => {
-
-    const response = await fetch(`https://yellow-rice-grow.loca.lt/take_photo`, { method: 'POST' });
-    const blob = await response.blob();
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = url;
-    a.download = 'photo.jpg';
-    document.body.appendChild(a);
-    a.click();
-    window.URL.revokeObjectURL(url);
-    Swal.fire({
-      title: "Foto guardada",
-      icon: "success",
-      showConfirmButton: false,
-    });
+    try {
+      const response = await fetch(`https://old-rules-battle.loca.lt/take_photo`, { method: 'POST' });
+      if (!response.ok) throw new Error('Error al tomar la foto');
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = 'photo.jpg';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      Swal.fire({
+        title: "Foto guardada",
+        icon: "success",
+        showConfirmButton: false,
+      });
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        title: "Error al tomar la foto",
+        icon: "error",
+        showConfirmButton: true,
+      });
+    }
   };
-
+  
   const startRecording = async () => {
-    getButtonStart(false)
-    getButtonStop(true)
-    await fetch(`https://yellow-rice-grow.loca.lt/start_recording`, { method: 'POST' });
+    try {
+      getButtonStart(false);
+      getButtonStop(true);
+      const response = await fetch(`https://old-rules-battle.loca.lt/start_recording`, { method: 'POST' });
+      if (!response.ok) throw new Error('Error al iniciar la grabación');
+      Swal.fire({
+        title: "Grabación iniciada",
+        icon: "success",
+        showConfirmButton: false,
+      });
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        title: "Error al iniciar la grabación",
+        icon: "error",
+        showConfirmButton: true,
+      });
+    }
   };
-
+  
   const stopRecording = async () => {
-    getButtonStart(true)
-    getButtonStop(false)
-    await fetch(`https://yellow-rice-grow.loca.lt/stop_recording`, { method: 'POST' });
-    Swal.fire({
-      title: "Video guardado",
-      icon: "success",
-      showConfirmButton: false,
-    });
+    try {
+      getButtonStart(true);
+      getButtonStop(false);
+      const response = await fetch(`https://old-rules-battle.loca.lt/stop_recording`, { method: 'POST' });
+      if (!response.ok) throw new Error('Error al detener la grabación');
+      Swal.fire({
+        title: "Grabación detenida y video guardado",
+        icon: "success",
+        showConfirmButton: false,
+      });
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        title: "Error al detener la grabación",
+        icon: "error",
+        showConfirmButton: true,
+      });
+    }
   };
+    
 
   return (
     <div className="maindiv">
