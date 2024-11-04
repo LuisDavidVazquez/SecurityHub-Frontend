@@ -20,20 +20,23 @@ interface SensorData {
   }[];
 }
 
-const url = import.meta.env.VITE_SOCKET_URL as string;
-const token = import.meta.env.VITE_SOCKET_TOKEN_URL as string;
-
-const socket: Socket = io(`${url}`, {
-  auth: {
-    token: `${token}`,
-  },
-  transports: ["websocket"],
-});
-
 function Stadistics() {
   const [sensorData, setSensorData] = useState<SensorData[]>([]);
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return;
+    }
+
+    const url = import.meta.env.VITE_SOCKET_URL as string;
+    const socket: Socket = io(url, {
+      auth: {
+        token,
+      },
+      transports: ["websocket"],
+    });
+
     socket.on("IncomingData", (data: { message: string }) => {
       const parsedData: SensorData = JSON.parse(data.message);
       setSensorData((prevData) => {
@@ -52,6 +55,7 @@ function Stadistics() {
 
     return () => {
       socket.off("IncomingData");
+      socket.disconnect();
     };
   }, []);
 

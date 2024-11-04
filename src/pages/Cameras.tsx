@@ -17,32 +17,27 @@ interface SensorData {
   }[];
 }
 
-const url = import.meta.env.VITE_SOCKET_URL as string;
-const token = import.meta.env.VITE_SOCKET_TOKEN_URL as string;
-
-const socket: Socket = io(`${url}`, {
-  auth: {
-    token: `${token}`,
-  },
-  transports: ["websocket"],
-});
-
-const cameraSocket: Socket = io("https://old-rules-battle.loca.lt", {
-  transports: ["websocket"],
-});
-
 const Cameras: React.FC = () => {
-
   const [movement, setMovement] = useState<boolean>(false);
   const [fire, setFire] = useState<boolean>(false);
   const [videoFrame, setVideoFrame] = useState<string>('');
   const videoRef = useRef<HTMLImageElement>(null);
-  const [buttonStart, getButtonStart] = useState(true)
-  const [buttonStop, getButtonStop] = useState(false)
-
+  const [buttonStart, getButtonStart] = useState(true);
+  const [buttonStop, getButtonStop] = useState(false);
 
   useEffect(() => {
-    socket.on('IncomingData', (data: { message: string }) => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return;
+    }
+
+    const url = import.meta.env.VITE_SOCKET_URL as string;
+    const mainSocket: Socket = io(url, {
+      auth: { token },
+      transports: ["websocket"],
+    });
+
+    mainSocket.on('IncomingData', (data: { message: string }) => {
       const parsedData: SensorData = JSON.parse(data.message);
       parsedData.sensors.forEach(sensor => {
         if (sensor.dataType === 'movimiento') {
@@ -54,21 +49,25 @@ const Cameras: React.FC = () => {
     });
 
     return () => {
-      socket.off('IncomingData');
+      mainSocket.off('IncomingData');
+      mainSocket.disconnect();
     };
   }, []);
 
-  
   useEffect(() => {
+    const cameraSocket: Socket = io("https://old-rules-battle.loca.lt", {
+      transports: ["websocket"],
+    });
+
     cameraSocket.on('video_frame', (data: { frame: string }) => {
       setVideoFrame(`data:image/jpeg;base64,${data.frame}`);
     });
 
     return () => {
       cameraSocket.off('video_frame');
+      cameraSocket.disconnect();
     };
   }, []);
-
 
   const takePhoto = async () => {
     try {
@@ -97,7 +96,7 @@ const Cameras: React.FC = () => {
       });
     }
   };
-  
+
   const startRecording = async () => {
     try {
       getButtonStart(false);
@@ -118,7 +117,7 @@ const Cameras: React.FC = () => {
       });
     }
   };
-  
+
   const stopRecording = async () => {
     try {
       getButtonStart(true);
@@ -139,7 +138,6 @@ const Cameras: React.FC = () => {
       });
     }
   };
-    
 
   return (
     <div className="maindiv">
@@ -172,8 +170,8 @@ const Cameras: React.FC = () => {
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <div className="camera-section-1-videocam">
                   {!videoFrame && (
-                    <div style={{width:'100%', height:"40vh", display:'flex', justifyContent:"center", alignItems:"center",color:'white'}}>
-                      <h1 style={{fontSize:"40px"}}>Cámara no disponibles</h1>
+                    <div style={{ width: '100%', height: "40vh", display: 'flex', justifyContent: "center", alignItems: "center", color: 'white' }}>
+                      <h1 style={{ fontSize: "40px" }}>Cámara no disponible</h1>
                     </div>
                   )}
                   {videoFrame && (
@@ -199,27 +197,27 @@ const Cameras: React.FC = () => {
                 </li>
                 {buttonStart && (
                   <li>
-                  <button onClick={startRecording}>
-                    Grabar
-                    <img
-                      src="/assets/svg/camara-de-pelicula.svg"
-                      alt="Icono de cámara de película"
-                      style={{ width: "15%" }}
-                    />
-                  </button>
-                </li>
+                    <button onClick={startRecording}>
+                      Grabar
+                      <img
+                        src="/assets/svg/camara-de-pelicula.svg"
+                        alt="Icono de cámara de película"
+                        style={{ width: "15%" }}
+                      />
+                    </button>
+                  </li>
                 )}
                 {buttonStop && (
                   <li>
-                  <button onClick={stopRecording}>
-                    Detener 
-                    <img
-                      src="/assets/svg/detener.svg"
-                      alt="Icono de detener"
-                      style={{ width: "15%" }}
-                    />
-                  </button>
-                </li>
+                    <button onClick={stopRecording}>
+                      Detener
+                      <img
+                        src="/assets/svg/detener.svg"
+                        alt="Icono de detener"
+                        style={{ width: "15%" }}
+                      />
+                    </button>
+                  </li>
                 )}
               </ul>
             </section>
